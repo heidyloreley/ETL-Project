@@ -22,7 +22,7 @@ SELECT * FROM barrel_price;
 --- INFLATION
 
 CREATE TABLE inflation (
-index serial PRIMARY KEY,
+id serial PRIMARY KEY,
 Year int,
 Inflation FLOAT
 );
@@ -50,7 +50,7 @@ quarter int,
 month int	
 );
 
-SELECT * FROM gdp
+SELECT * FROM gdp;
 
 
 
@@ -84,7 +84,6 @@ order by year asc;
 
 
 --3. GDP vs Barrel Price
--- select year, month, round( CAST(avg("GDP Index") as numeric), 2) as av_gdp , round( CAST(avg("barrel price") as numeric), 2) as av_bp from MASTER_TABLE
 select year, quarter, month, round( CAST(min(gdp) as numeric), 2) as av_gdp , round( CAST(min(barrelprice) as numeric), 2) as av_bp from MASTER_TABLE
 where year >= '2000' 
 group by quarter, year, month
